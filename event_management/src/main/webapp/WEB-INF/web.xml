@@ -1,9 +1,11 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
 
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
+
+  <!-- Demo Servlet Configuration -->
   <servlet>
     <servlet-name>demo</servlet-name>
     <servlet-class>com.example.demo</servlet-class>
@@ -11,5 +13,15 @@
   <servlet-mapping>
     <servlet-name>demo</servlet-name>
     <url-pattern>/demo</url-pattern>
+  </servlet-mapping>
+
+  <!-- UserControllerServlet Configuration -->
+  <servlet>
+    <servlet-name>UserControllerServlet</servlet-name>
+    <servlet-class>com.controller.UserControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserControllerServlet</servlet-name>
+    <url-pattern>/UserControllerServlet</url-pattern>
   </servlet-mapping>
 </web-app>
