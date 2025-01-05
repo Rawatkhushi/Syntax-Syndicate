@@ -24,4 +24,59 @@
     <servlet-name>UserControllerServlet</servlet-name>
     <url-pattern>/UserControllerServlet</url-pattern>
   </servlet-mapping>
+
+
+
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/user-login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+
+
+  <servlet>
+    <description></description>
+    <display-name>SignUpServlet</display-name>
+    <servlet-name>SignUpServlet</servlet-name>
+    <servlet-class>com.servlet.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpServlet</servlet-name>
+    <url-pattern>/user-signup</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+
+
+  <servlet>
+    <description></description>
+    <display-name>CreateEventServlet</display-name>
+    <servlet-name>CreateEventServlet</servlet-name>
+    <servlet-class>com.servlet.CreateEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateEventServlet</servlet-name>
+    <url-pattern>/create-event</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+
+
+   <servlet>
+    <description></description>
+    <display-name>UpdateEventServlet</display-name>
+    <servlet-name>UpdateEventServlet</servlet-name>
+    <servlet-class>com.servlet.UpdateEventServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateEventServlet</servlet-name>
+    <url-pattern>/update-event</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,27 +1,57 @@
 package com.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
-public class UserDAO {
-    private static final String URL = "jdbc:mysql://localhost:3306/event"; // Fixed the URL format
-    private static final String USER = "root";
-    private static final String PASSWORD = "qazwsxedc";
+import com.model.User;
 
-    private  static final  String INSERT_USER_SQL = "INSERT INTO users" + "(uname,email,country,password)" + "(?,?,?,?);";
-    private static final String SELECT_USER_BY_ID = "SELECR*FROM TABLE1 WHERE ID = ?;";
-    private static final String SELECT_ALL_USER = "SELECT*FROM USERS";
-
-    public static void main(String[] args) {
-        try {
-            // Establishing a connection to the database
-            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Success");
-        } catch (SQLException e) {
-            // Handling SQL exception
-            e.printStackTrace();
-            throw new RuntimeException("Database connection failed", e); // More informative error message
-        }
-    }
+public class UserDao {
+	private Connection con;
+	private String query;
+	private PreparedStatement pst;
+	private ResultSet rs;
+	public UserDao(Connection con) {
+		this.con = con;
+	}
+	
+	public User userLogin(String email, String password) {
+		User user = null;
+		try {
+			query = "select * from users where email=? and password=?";
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, email);
+			pst.setString(2, password);
+			rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				user  = new User();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setEmail(rs.getString("email"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.print(e.getMessage());
+		}
+		return user;
+		
+	}
+	
+	public int userSignup(User user) {
+		int result = 0;
+		
+		try {
+			query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+			pst = this.con.prepareStatement(query);
+			pst.setString(1, user.getName());
+			pst.setString(2, user.getEmail());
+			pst.setString(3, user.getPassword());
+			
+			result = pst.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
