@@ -95,7 +95,7 @@
     <div class="container">
       <h1>Log in</h1>
       <div class="required-field">*Indicates required field</div>
-      <form id="loginForm">
+      <form action="LoginServlet" method="post" id="loginForm">
         <div class="form-group">
           <label for="email">*Email address</label>
           <input
@@ -157,5 +157,6 @@
           }
         });
     </script>
+    <%@ include file="includes/footer.jsp" %>
   </body>
 </html>

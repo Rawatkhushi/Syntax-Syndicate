@@ -132,7 +132,7 @@
         <h1>Create an account</h1>
       </div>
 
-      <form id="signup-form">
+      <form action="SignUpServlet" method="post" id="signup-form">
         <div class="form-group">
           <label for="email">Email</label>
           <div class="input-wrapper">
@@ -227,5 +227,6 @@
           }
         });
     </script>
+    <%@ include file="includes/footer.jsp" %>
   </body>
 </html>
